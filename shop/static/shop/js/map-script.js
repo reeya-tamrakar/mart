@@ -18,8 +18,6 @@ $(document).ready(function(){
 		overviewMapControl: false,
 		clickable: false
 	});
-
-	var image = 'images/map-marker.png';
 	map.addMarker({
 		lat: 51.507351,
 		lng: -0.127758,
