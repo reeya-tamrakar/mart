@@ -18,3 +18,6 @@ def contact(request):
 
 def shopgrid(request):
     return render(request, 'shop/shop-grid.html')
+
+def products(request):
+    return render(request, "shop/products.html")
