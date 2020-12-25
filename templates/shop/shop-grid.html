@@ -174,7 +174,12 @@ Shop Grid |
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-lg-4 col-md-6 col-12">
+					<div class="col-lg-4 col-md-6 col-12" id="productsGrid">
+						<div v-if="products">
+							<div v-for="product in products">
+								[[ product.fields.name ]]
+							</div>
+						</div>
 						<div class="single-product">
 							<div class="product-img">
 								<a href="product-details">
@@ -342,7 +347,7 @@ Shop Grid |
 								<div class="button-head">
 									<div class="product-action">
 										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+									2	<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
 										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
 									</div>
 									<div class="product-action-2">
@@ -479,12 +484,12 @@ Shop Grid |
 							<h2>Flared Shift Dress</h2>
 							<div class="quickview-ratting-review">
 								<div class="quickview-ratting-wrap">
-									<div class="quickview-ratting">
+									<div class="quickview- fa fa-star"></i>
 										<i class="yellow fa fa-star"></i>
 										<i class="yellow fa fa-star"></i>
+										<i class="fa faratting">
 										<i class="yellow fa fa-star"></i>
-										<i class="yellow fa fa-star"></i>
-										<i class="fa fa-star"></i>
+										<i class="yellow-star"></i>
 									</div>
 									<a href="#"> (1 customer review)</a>
 								</div>
@@ -561,6 +566,36 @@ Shop Grid |
 
 {% block 'script' %}
 <script>
-	var shop_grid = new Vue();
+	var shop_grid = new Vue({
+		el: '#productsGrid',
+		delimiters: ['[[',']]'],
+		data () {
+			return {
+				products: null,
+			}
+		},
+		methods: {
+			async fetchProducts() {
+				this.products = await fetch('api/fetch-products')
+				.then((response) => response.json())
+				.then((result) => {
+					return result
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+				this.products = JSON.parse(this.products)
+			},
+			startFetching() {
+				setInterval( () => {
+					this.fetchProducts()
+				}, 1000)
+			}
+		},
+		created() {
+			this.fetchProducts();
+			this.startFetching();
+		}
+	});
 </script>
 {% endblock %}
