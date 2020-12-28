@@ -173,12 +173,17 @@ Shop Grid |
 						<!--/ End Shop Top -->
 					</div>
 				</div>
+				<div class="alert alert-info alert-dismissible fade show mt-2" role="alert">
+					Showing Latest Products. It <strong>consumes your data</strong>. To abort it, use filtering and sort
+					to find desired product.
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
 				<div class="row">
 					<div class="col-lg-4 col-md-6 col-12" id="productsGrid">
-						<div v-if="products">
-							<div v-for="product in products">
-								[[ product.fields.name ]]
-							</div>
+						<div v-for="product in products">
+							[[ product.fields.name ]]
 						</div>
 						<div class="single-product">
 							<div class="product-img">
@@ -589,7 +594,7 @@ Shop Grid |
 			startFetching() {
 				setInterval( () => {
 					this.fetchProducts()
-				}, 1000)
+				}, 10000)
 			}
 		},
 		created() {
