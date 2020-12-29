@@ -1,8 +1,6 @@
 from django.urls import path
-from django.conf.urls.static import static
 from . import views
 from .api import fetch_products
-from mart import settings
 
 urlpatterns = [
     path('', views.index, name="ShopHomePage"),
@@ -17,4 +15,3 @@ urlpatterns = [
 
     path('products', views.products, name="ProductsPage"),
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
