@@ -23,12 +23,6 @@
                                                       <li><router-link to="checkout">Checkout</router-link></li>
                                                   </ul>
                                               </li>
-                                              <li><router-link to="pages">Pages</router-link></li>
-                                              <li><router-link to="blog">Blog<i class="ti-angle-down"></i></router-link>
-                                                      <ul class="dropdown">
-                                                          <li><router-link to="blog-single-sidebar">Blog Single Sidebar</router-link></li>
-                                                      </ul>
-                                                  </li>
                                                   <li><router-link to="contact">Contact Us</router-link></li>
                                               </ul>
                                       </div>
