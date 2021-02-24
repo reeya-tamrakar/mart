@@ -1,0 +1,4 @@
+django
+django_webpack_loader
+mysqlclient
+Pillow
