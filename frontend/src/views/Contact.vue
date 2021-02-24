@@ -33,7 +33,7 @@
                                         <div class="col-lg-12 col-12">
                                             <div class="form-group">
                                                 <label>Your Name<span>*</span></label>
-                                                <input v-model="name" type="text" placeholder="">
+                                                <input v-model="name" type="text" placeholder="" >
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-12">
